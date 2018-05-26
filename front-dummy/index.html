@@ -1,0 +1,212 @@
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <script src="js/index_scripts.js"></script>
+
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+   
+  <!--Deposit button font -->
+  <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Plaster|Source+Code+Pro" rel="stylesheet">  
+
+  <!--Current Balnce Button font-->
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+   
+  <!--Greetings font-->
+  <link href="https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC|Inconsolata|Orbitron" rel="stylesheet">
+
+
+</head>
+
+
+
+<!--Navbar Strats-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">        
+            <img alt="Brand" width="50" height="50" src="https://cdn4.iconfinder.com/data/icons/medical-icons-normal/128/modules_financial.png">
+        </a>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Link</a></li> -->
+       
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li><a href="#">Link</a></li> -->
+          <button  type="button" class="btn btn-default btn-lg curr_bal_button">
+           Current Balance<br> 
+           $100 
+          </button>
+          <button type="button" class="btn btn-success btn-lg deposit_button">
+           Deposit  <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 
+          </button>
+          <li class="dropdown nav navbar-nav navbar-right">
+            <a href="#" class="dropdown-toggle dropdown_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi Brackets <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="dropdown_font">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" class="dropdown_font">Log out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <!--Navbar ends-->
+  <body>
+  <!--Page Contents-->
+      
+    <!--Left Sidebar-->
+    <nav class="main-menu">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+              
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-laptop fa-2x"></i>
+                    <span class="nav-text">
+                       Currnt Online users
+                    </span>
+                </a>
+                
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                   <i class="fa fa-list fa-2x"></i>
+                    <span class="nav-text">
+                        Tournaments
+                    </span>
+                </a>
+                
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                   <i class="fa fa-folder-open fa-2x"></i>
+                    <span class="nav-text">
+                        History
+                    </span>
+                </a>
+               
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-bar-chart-o fa-2x"></i>
+                    <span class="nav-text">
+                        Graphs and Statistics
+                    </span>
+                </a>
+            </li>
+            
+        </ul>
+
+        <ul class="logout">
+            <li>
+               <a href="#">
+                     <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>  
+        </ul>
+    </nav>
+
+    <!--End of Left Sidebar-->
+    <!--Main Content-->
+       <div class="row">
+            <div class="col-md-1"></div>
+            
+        <!--Graph Content-->
+           <div class="col-md-9 graph-content" >
+                <div id="chartContainer" class="graph_styling"></div>
+                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+           </div>
+
+      <!--Right Panel-->
+           <div class="col-md-2 right_panel">
+             <br>
+            <div class="row">
+                <div class="container set_buttons_div" >
+                    <form>
+                      <div class="form-group row">
+                        <div class="col-xs-2">
+                          <input class="form-control" id="ex1" type="text">
+                          <br>
+                          <button type="button" style=""class="btn btn-warning set_buttons">Set Time</button>
+                        </div>  
+                      </div>
+                    </form>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="container set_buttons_div" >
+                    <form>
+                      <div class="form-group row">
+                        <div class="col-xs-2">
+                          <input class="form-control" id="ex1" type="text">
+                          <br>
+                          <button type="button" class="btn btn-info set_buttons">Set Amount</button>
+                        </div>  
+                      </div>
+                    </form>
+                  </div>
+            </div>
+            <br>
+            <div class="row">
+                    <a href="#" class="btn btn-sq-lg btn-success b_s_buttons" >
+                            <i class="glyphicon glyphicon-thumbs-up fa-5x"></i><br/>
+                            Buy
+                          </a>
+            </div>
+            <br>
+            <div class="row">
+                    <a href="#" class="btn btn-sq-lg btn-danger b_s_buttons" >
+                            <i class="glyphicon glyphicon-thumbs-down fa-5x"></i><br/>
+                            Sell
+                          </a>
+            </div>
+
+              
+
+                     
+           </div>
+       </div>
+
+    <!--End of main content-->
+
+
+  <!-- End of Page Contents-->
+
+
+  </body>
+
+
+     
