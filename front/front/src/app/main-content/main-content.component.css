@@ -1,0 +1,36 @@
+/*Graph content*/
+.graph_content{
+    margin-right:-20px;
+  }
+
+  /* Graph Styling */
+  .graph_styling{
+    height: 450px; width:100%;
+  }
+
+  /*Right Panel*/
+  .right_panel{
+    background-color: #F8F8F8;height:100%;margin-top:-20px;padding-bottom: 10%;
+  }
+
+  /*Set Time styling*/
+  .set_buttons_div{
+    margin-left: 35px;
+  }
+
+  /*Set Time button styling*/
+  .set_buttons{
+    font-family: 'Source Code Pro', monospace;
+    font-family: 'Plaster', cursive;
+    font-family: 'Black Han Sans', sans-serif;
+   }
+
+
+   /* Buy Sell button styling*/
+   .b_s_buttons{
+    margin-left:50px;
+    padding: 20px;
+    font-family: 'Source Code Pro', monospace;
+    font-family: 'Plaster', cursive;
+    font-family: 'Black Han Sans', sans-serif;
+   }
