@@ -1,0 +1,16 @@
+  /* Current Balance Button */
+  .curr_bal_button{
+    margin: 8px;font-size:10px;font-family: 'Orbitron', sans-serif;
+  }
+
+  /* Deposit Button*/
+  .deposit_button{
+        margin: 8px;font-family: 'Source Code Pro', monospace;
+        font-family: 'Plaster', cursive;
+        font-family: 'Black Han Sans', sans-serif;
+  }
+
+  /*Dropdown font*/
+  .dropdown_font{
+    font-size:15px;font-family: 'Orbitron', sans-serif;
+  }
