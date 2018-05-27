@@ -17,6 +17,20 @@ Frontend of this project is made using Angular 6
 
 So make sure to update your Node and Angular to the latest versions.
 
+# Running the client
+
+```sh
+cd stockexchange-client
+```
+```sh
+npm install
+```
+```sh
+ng serve 
+```
+```sh
+server will start at http://localhost:4200/
+```
 # Raw__materials
 
 make sure to instal GitKraken Guys
