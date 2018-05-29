@@ -1,10 +1,11 @@
 package com.brackets.stockexchange.controller;
 
 import com.brackets.stockexchange.model.User;
-import com.brackets.stockexchange.service.UserService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.brackets.stockexchange.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 /**
  * Created by rajith on 5/22/18.
@@ -14,11 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    UserService userService = new UserService();
+    /**
+     * @Autowired get the bean userRepository
+     */
+    @Autowired
+    private UserRepository userRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public User getUsers() {
-        User user =  userService.setUsers();
-        return user;
+    @RequestMapping(path = "/save", method = RequestMethod.POST)
+    public @ResponseBody String createNewUser(@RequestBody User user) {
+        userRepository.save(user);
+        return "Saved";
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<User> getUser(@PathVariable("id") Integer id) {
+       Optional<User> user = userRepository.findById(id);
+       return  user;
+    }
+
+    @RequestMapping(path="/all", method = RequestMethod.GET)
+    public @ResponseBody Iterable<User> getAllUsers() {
+        // This returns a JSON or XML with the users
+        return userRepository.findAll();
     }
 }
