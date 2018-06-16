@@ -5,13 +5,19 @@ import { AppComponent } from './app.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { LeftNavComponent } from './left-nav/left-nav.component';
 import { MainContentComponent } from './main-content/main-content.component';
+import { CentercomponentComponent } from './centercomponent/centercomponent.component';
+import { RightcomponentComponent } from './rightcomponent/rightcomponent.component';
+import { LogincomponentComponent } from './logincomponent/logincomponent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent,
     LeftNavComponent,
-    MainContentComponent
+    MainContentComponent,
+    CentercomponentComponent,
+    RightcomponentComponent,
+    LogincomponentComponent
   ],
   imports: [
     BrowserModule
