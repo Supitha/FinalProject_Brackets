@@ -8,6 +8,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { CentercomponentComponent } from './centercomponent/centercomponent.component';
 import { RightcomponentComponent } from './rightcomponent/rightcomponent.component';
 import { LogincomponentComponent } from './logincomponent/logincomponent.component';
+import { FullpageComponent } from './fullpage/fullpage.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LogincomponentComponent } from './logincomponent/logincomponent.compone
     MainContentComponent,
     CentercomponentComponent,
     RightcomponentComponent,
-    LogincomponentComponent
+    LogincomponentComponent,
+    FullpageComponent
   ],
   imports: [
     BrowserModule
