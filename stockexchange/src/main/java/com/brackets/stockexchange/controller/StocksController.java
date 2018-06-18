@@ -26,7 +26,7 @@ public class StocksController {
     @RequestMapping(path = "/save", method = RequestMethod.POST)
     public @ResponseBody String createNewStock(@RequestBody Stocks stocks) {
     stocksRepository.save(stocks);
-    
+   
     return "saved";
    
     }

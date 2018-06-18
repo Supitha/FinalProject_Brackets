@@ -16,6 +16,7 @@ public class Bank {
     private String account_name;
     private Long balance;
     private int turns = 0;
+    private int profit;
 
     public Bank() {}
 
@@ -25,6 +26,14 @@ public class Bank {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public int getProfit() {
+        return profit;
+    }
+
+    public void setProfit(int profit) {
+        this.profit = profit;
     }
 
     public String getAccount_name() {
