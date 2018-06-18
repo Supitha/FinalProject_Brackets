@@ -24,6 +24,8 @@ public class Broker_customer {
     private String stocks;
     private int quantity;
     private int price;
+    private int price_sell;
+    private int price_bought;
 
     public Broker_customer() {}
 
@@ -65,6 +67,22 @@ public class Broker_customer {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+    
+    public int getPrice_sell() {
+        return price_sell;
+    }
+
+    public void setPrice_sell(int price_sell) {
+        this.price_sell = price_sell;
+    }
+       
+    public int getPrice_bought() {
+        return price_bought;
+    }
+
+    public void setPrice_bought(int price_bought) {
+        this.price_bought = price_bought;
     }
 
     public String getCustomer_name() {
