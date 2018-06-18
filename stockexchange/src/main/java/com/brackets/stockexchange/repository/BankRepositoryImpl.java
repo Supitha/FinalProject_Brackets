@@ -23,6 +23,32 @@ public class BankRepositoryImpl implements BankRepositoryCustom{
         return query.getResultList();
     }
 
+//    @Override
+//    public List<Bank> balance(String account_name) {
+//        Query query = entityManager.createNativeQuery("SELECT balance from bank WHERE account_name=:account_name", Bank.class);
+//        query.setParameter("account_name",account_name);
+//
+//        List<Object[]> results = query.getResultList();
+//
+//        System.out.println(results);
+//        if (query.getResultList().size() == 1 ) {
+//
+////            return query.getU();
+//        }
+//
+//        return null;
+//
+//    }
+
+    @Override
+    public Bank balance(String account_name) {
+        Query query = entityManager.createNativeQuery("select * from bank where account_name = ?", Bank.class);
+        query.setParameter(1, account_name);
+        query.setMaxResults(1);
+
+        return (Bank) query.getSingleResult();
+    }
+
     @Override
     @Transactional
     public void createNewAccountForUser(Bank bank) {

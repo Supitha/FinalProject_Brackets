@@ -9,4 +9,6 @@ public interface BankRepositoryCustom {
     void createNewAccountForUser(Bank bank);
 
     List<Bank> getAccByname(String account_name);
+
+    Bank balance(String username);
  }
