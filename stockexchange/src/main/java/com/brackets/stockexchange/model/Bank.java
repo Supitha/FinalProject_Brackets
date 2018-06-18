@@ -1,6 +1,5 @@
 package com.brackets.stockexchange.model;
 
-import javafx.beans.DefaultProperty;
 import org.springframework.boot.jackson.JsonComponent;
 
 import javax.persistence.*;
