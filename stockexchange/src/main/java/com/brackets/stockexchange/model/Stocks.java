@@ -49,7 +49,7 @@ public class Stocks {
         return price;
     }
 
-    public void setEmail(int price) {
+    public void setPrice(int price) {
         this.price = price;
     }
     
