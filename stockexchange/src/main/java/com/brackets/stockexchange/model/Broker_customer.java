@@ -14,10 +14,12 @@ public class Broker_customer {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "broker_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Broker broker;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "broker_id", nullable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    private Broker broker;
+
+    private String broker_name;
 
     private String customer_name;
 
@@ -35,14 +37,6 @@ public class Broker_customer {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Broker getBroker() {
-        return broker;
-    }
-
-    public void setBroker(Broker broker) {
-        this.broker = broker;
     }
 
     public String getStocks() {
@@ -91,5 +85,13 @@ public class Broker_customer {
 
     public void setCustomer_name(String customer_name) {
         this.customer_name = customer_name;
+    }
+
+    public String getBroker_name() {
+        return broker_name;
+    }
+
+    public void setBroker_name(String broker_name) {
+        this.broker_name = broker_name;
     }
 }
