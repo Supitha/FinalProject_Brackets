@@ -51,4 +51,14 @@ public class UserController {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
+
+    @RequestMapping(path="/login", method = RequestMethod.POST)
+    public @ResponseBody boolean login(@RequestBody User user) {
+
+        if (userRepository.checklogin(user.getUsername(), user.getPassword())) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

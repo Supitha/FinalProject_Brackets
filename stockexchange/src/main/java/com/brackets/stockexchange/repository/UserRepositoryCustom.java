@@ -5,4 +5,5 @@ package com.brackets.stockexchange.repository;
  */
 public interface UserRepositoryCustom {
     boolean existsByusername(String username);
+    boolean checklogin(String username, String password);
 }

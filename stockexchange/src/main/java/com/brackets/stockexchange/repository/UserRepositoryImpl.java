@@ -23,4 +23,16 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         }
         return false;
     }
+
+    @Override
+    public boolean checklogin(String username, String password) {
+        Query query = entityManager.createNativeQuery("SELECT * FROM USER WHERE username=:username AND password=:password", User.class);
+        query.setParameter("username", username);
+        query.setParameter("password", password);
+
+        if (query.getResultList().size() == 1) {
+            return true;
+        }
+        return false;
+    }
 }
