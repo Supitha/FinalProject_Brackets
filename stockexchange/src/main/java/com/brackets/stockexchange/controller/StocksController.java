@@ -13,22 +13,25 @@ import java.util.Optional;
  *
  * @author supithaweerasinghe
  */
-
-
-
 @RestController
 @RequestMapping("/stocks")
 public class StocksController {
 
     @Autowired
     private StocksRepository stocksRepository;
-    
+
     @RequestMapping(path = "/save", method = RequestMethod.POST)
-    public @ResponseBody String createNewStock(@RequestBody Stocks stocks) {
-    stocksRepository.save(stocks);
-   
-    return "saved";
-   
+    public @ResponseBody
+    String createNewStock(@RequestBody Stocks stocks) {
+        stocksRepository.save(stocks);
+        return "saved";
     }
-    
+
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
+    public @ResponseBody
+    Iterable<Stocks> findAll() {
+        // This returns a JSON or XML with the users
+        return stocksRepository.findAll();
+    }
+
 }
