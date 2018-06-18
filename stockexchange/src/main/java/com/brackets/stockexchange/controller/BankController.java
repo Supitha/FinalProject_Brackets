@@ -1,6 +1,9 @@
 package com.brackets.stockexchange.controller;
 
+import com.brackets.stockexchange.model.Bank;
+import com.brackets.stockexchange.model.User;
 import com.brackets.stockexchange.repository.BankRepository;
+import com.brackets.stockexchange.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,13 +11,19 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/bank")
 public class BankController {
 
-//    @Autowired
-//    private BankRepository bankRepository;
+    @Autowired
+    private BankRepository bankRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-//    @RequestMapping(path = "/save", method = RequestMethod.POST)
-//    public @ResponseBody String createNewAccount(@RequestBody String username, Long amount) {
-//
-//        return "created";
-//    }
+    @RequestMapping(path = "/balance", method = RequestMethod.POST)
+    public @ResponseBody String balance(@RequestBody User user) {
 
-}
+        if (userRepository.existsByusername(user.getUsername())) {
+            Bank bank = bankRepository.balance(user.getUsername());
+            return String.valueOf(bank.getBalance());
+        } else {
+            return "No Account Registered Account";
+        }
+      }
+    }
