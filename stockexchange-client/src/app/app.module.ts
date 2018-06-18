@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {RouterModule,Routes} from '@angular/router';
+
+
 
 import { AppComponent } from './app.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
@@ -9,6 +12,27 @@ import { CentercomponentComponent } from './centercomponent/centercomponent.comp
 import { RightcomponentComponent } from './rightcomponent/rightcomponent.component';
 import { LogincomponentComponent } from './logincomponent/logincomponent.component';
 import { FullpageComponent } from './fullpage/fullpage.component';
+import { UserService } from './user.service';
+import { AuthguardGuard } from './authguard.guard';
+
+
+const appRoutes:Routes = [
+  {
+    path:'',
+    component:LogincomponentComponent
+  },
+  {
+    path:'logincomponent',
+    component:LogincomponentComponent
+  },
+  {
+    path: 'fullpage',
+    canActivate:[AuthguardGuard],
+    component:FullpageComponent
+
+  }
+];
+
 
 @NgModule({
   declarations: [
@@ -22,9 +46,10 @@ import { FullpageComponent } from './fullpage/fullpage.component';
     FullpageComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule
   ],
-  providers: [],
+  providers: [UserService,AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
