@@ -1,5 +1,6 @@
 package com.brackets.stockexchange.model;
 
+import javax.persistence.Column;
 import org.springframework.boot.jackson.JsonComponent;
 
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ public class Stocks {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(unique = true)
     private String stockName;
     private int price;
     private int qty;
