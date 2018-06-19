@@ -19,6 +19,9 @@ public class Broker_stocks {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Broker broker;
 
+    @Transient
+    private String cusName;
+    
     @Column(unique=true)
     private String stock;
     private int price;
@@ -26,6 +29,14 @@ public class Broker_stocks {
     private String broker_name;
 
     public Broker_stocks() {}
+    
+    public String getCusName() {
+        return cusName;
+    }
+
+    public void setCusName(String cusName) {
+        this.cusName = cusName;
+    }
 
     public int getId() {
         return id;

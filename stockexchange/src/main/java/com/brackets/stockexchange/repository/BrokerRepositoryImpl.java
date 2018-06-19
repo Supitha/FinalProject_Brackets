@@ -29,17 +29,48 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
     }
 
     @Override
+    @Transactional
     public boolean checkQty(Broker_stocks broker_stocks) {
         int cqty = broker_stocks.getQuantity();
-        Query query = entityManager.createNativeQuery("select * from broker_stocks where stock = ?", Broker_stocks.class);
+        String cname = broker_stocks.getCusName();
+        String bname = broker_stocks.getBroker_name();
+        Query query = entityManager.createNativeQuery("select * from broker_stocks where (stock = ? and broker_name = ?)", Broker_stocks.class);
         query.setParameter(1, broker_stocks.getStock());
+        query.setParameter(2, bname);
         query.setMaxResults(1);
+//        if (query.getFirstResult() == 0) {
+//            return false;
+//        }//TODO:
         Broker_stocks cus = (Broker_stocks) query.getSingleResult();
+
         int qty = cus.getQuantity();
-        if(cqty<=qty){
+        if (cqty <= qty) {
+            updateBrokerStocks(cus, cqty);
+            addTomBrokerCustomer(cus, cqty, cname);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
+    @Override
+    @Transactional
+    public void updateBrokerStocks(Broker_stocks broker_stocks, int qty) {
+        Query query = entityManager.createNativeQuery("UPDATE broker_stocks set quantity=quantity-(?) WHERE stock=(?)", Broker_stocks.class);
+        query.setParameter(1, qty);
+        query.setParameter(2, broker_stocks.getStock());
+        query.executeUpdate();
+    }
+
+    @Override
+    @Transactional
+    public void addTomBrokerCustomer(Broker_stocks broker_stocks, int qty, String cname) {
+        Query query = entityManager.createNativeQuery("UPDATE broker_customer set price_bought=(?),quantity=(?),stocks=(?) WHERE customer_name=(?)", Broker_stocks.class);
+        query.setParameter(1, broker_stocks.getPrice());
+        query.setParameter(2, qty);
+        query.setParameter(3, broker_stocks.getStock());
+        query.setParameter(4, cname);
+        query.executeUpdate();
+    }
+
 }
