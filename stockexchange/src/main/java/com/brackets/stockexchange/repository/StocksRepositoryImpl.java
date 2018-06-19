@@ -24,7 +24,6 @@ public class StocksRepositoryImpl implements StocksRepositoryCustom {
         Query query = entityManager.createNativeQuery("UPDATE stocks set price=price+(?) WHERE id=(?)", Stocks.class);
         query.setParameter(1, stocks.getPrice());
         query.setParameter(2, stocks.getId());
-        entityManager.merge(stocks);
-        entityManager.flush();
+        query.executeUpdate();
     }
 }
