@@ -38,9 +38,9 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         query.setParameter(1, broker_stocks.getStock());
         query.setParameter(2, bname);
         query.setMaxResults(1);
-//        if (query.getFirstResult() == 0) {
-//            return false;
-//        }//TODO:
+        if (query.getResultList().size() == 0) {
+            return false;
+        }
         Broker_stocks cus = (Broker_stocks) query.getSingleResult();
 
         int qty = cus.getQuantity();
