@@ -2,6 +2,7 @@ package com.brackets.stockexchange.controller;
 
 import com.brackets.stockexchange.model.Broker;
 import com.brackets.stockexchange.model.Broker_customer;
+import com.brackets.stockexchange.model.Broker_stocks;
 import com.brackets.stockexchange.model.User;
 import com.brackets.stockexchange.repository.BrokerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,11 @@ public class BrokerController {
         user.setUsername(b_customer.getCustomer_name());
         brokerRepository.createNewCustomerForBroker(b_customer);
         return "saved";
+    }
+        
+    @RequestMapping(path = "/qty", method = RequestMethod.POST)
+    public @ResponseBody String balance(@RequestBody Broker_stocks user) {
+            boolean cus = brokerRepository.checkQty(user);
+            return String.valueOf(cus);
     }
 }
