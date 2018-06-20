@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule,Routes} from '@angular/router';
 
-
+import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
@@ -47,7 +47,8 @@ const appRoutes:Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [UserService,AuthguardGuard],
   bootstrap: [AppComponent]
