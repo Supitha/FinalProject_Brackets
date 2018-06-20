@@ -36,4 +36,20 @@ public class BrokerController {
             boolean cus = brokerRepository.checkQty(user);
             return String.valueOf(cus);
     }
+
+    @RequestMapping(path = "/sell", method = RequestMethod.POST)
+    public @ResponseBody String sellstocks(@RequestBody Broker_customer b_customer) {
+         Broker_customer broker_customer = new Broker_customer();
+         broker_customer.setPrice_sell(b_customer.getPrice_sell());
+         broker_customer.setCustomer_name(b_customer.getCustomer_name());
+         broker_customer.setBroker_name(b_customer.getBroker_name());
+         broker_customer.setStocks(b_customer.getStocks());
+
+         if (brokerRepository.sellStocks(broker_customer)) {
+             return "Sold Successfully";
+         }else {
+             return "No Matching record found";
+         }
+    }
+
 }

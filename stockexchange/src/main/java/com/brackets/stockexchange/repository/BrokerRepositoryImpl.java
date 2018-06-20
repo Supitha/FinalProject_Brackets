@@ -73,4 +73,19 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         query.executeUpdate();
     }
 
+    @Override
+    @Transactional
+    public boolean sellStocks(Broker_customer broker_customer) {
+        Query query = entityManager.createNativeQuery("UPDATE  broker_customer set price_sell=(?) WHERE customer_name=(?) AND broker_name=(?)  AND stocks=(?)", Broker_customer.class);
+        query.setParameter(1, broker_customer.getPrice_sell());
+        query.setParameter(2, broker_customer.getCustomer_name());
+        query.setParameter(3, broker_customer.getBroker_name());
+        query.setParameter(4,broker_customer.getStocks());
+
+        if (query.executeUpdate() == 1) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

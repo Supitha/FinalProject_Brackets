@@ -11,4 +11,5 @@ public interface BrokerRepositoryCustom {
     boolean checkQty(Broker_stocks broker_stocks); 
     void updateBrokerStocks(Broker_stocks broker_stocks,int qty);
     void addTomBrokerCustomer(Broker_stocks broker_stocks,int qty,String cname);
+    boolean sellStocks(Broker_customer broker_customer);
 }
