@@ -1,7 +1,10 @@
 package com.brackets.stockexchange.repository;
 
+import com.brackets.stockexchange.model.Bank;
+import com.brackets.stockexchange.model.Broker;
 import com.brackets.stockexchange.model.Broker_customer;
 import com.brackets.stockexchange.model.Broker_stocks;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +21,10 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
     @PersistenceContext
     EntityManager entityManager;
 
+
+    @Autowired
+    private BankRepository bankRepository;
+
     @Override
     @Transactional
     public void createNewCustomerForBroker(Broker_customer broker_customer) {
@@ -30,7 +37,7 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
 
     @Override
     @Transactional
-    public boolean checkQty(Broker_stocks broker_stocks) {
+    public String checkQty(Broker_stocks broker_stocks) {
         int cqty = broker_stocks.getQuantity();
         String cname = broker_stocks.getCusName();
         String bname = broker_stocks.getBroker_name();
@@ -39,7 +46,7 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         query.setParameter(2, bname);
         query.setMaxResults(1);
         if (query.getResultList().size() == 0) {
-            return false;
+            return "No Account Found";
         }
         Broker_stocks cus = (Broker_stocks) query.getSingleResult();
 
@@ -51,14 +58,22 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         customer.setPrice_sell(0);
         customer.setQuantity(cqty);
         customer.setStocks(cus.getStock());
-
         int qty = cus.getQuantity();
         if (cqty <= qty) {
             updateBrokerStocks(cus, cqty);
-            addToBrokerCustomer(customer, cqty ,cname);
-            return true;
+
+            Bank bank = bankRepository.balance(cname);
+            int balance = (int) bank.getBalance();
+            if (balance < broker_stocks.getPrice()) {
+                return "No Sufficient credits available";
+            } else {
+                addToBrokerCustomer(customer, cqty, cname);
+                bankRepository.deduct(cname, broker_stocks.getPrice());
+            }
+
+            return "Buy successfully";
         } else {
-            return false;
+            return "No enough Stocks";
         }
     }
 

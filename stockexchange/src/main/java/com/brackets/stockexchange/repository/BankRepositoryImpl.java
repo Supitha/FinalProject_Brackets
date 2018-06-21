@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class BankRepositoryImpl implements BankRepositoryCustom{
+public class BankRepositoryImpl implements BankRepositoryCustom {
 
     @PersistenceContext
     EntityManager entityManager;
@@ -58,4 +58,14 @@ public class BankRepositoryImpl implements BankRepositoryCustom{
         entityManager.persist(bank);
         entityManager.flush();
     }
+
+    @Override
+    @Transactional
+    public void deduct(String accName, int amount) {
+        Query query = entityManager.createNativeQuery("UPDATE bank set balance=balance-(?) WHERE account_name=(?)", Bank.class);
+        query.setParameter(1, amount);
+        query.setParameter(2, accName);
+        query.executeUpdate();
+    }
+
 }
