@@ -29,7 +29,7 @@
    /* Buy Sell button styling*/
    .b_s_buttons{
     margin-left:50px;
-    padding: 20px;
+    padding:10px 50px 10px 50px;
     font-family: 'Source Code Pro', monospace;
     font-family: 'Plaster', cursive;
     font-family: 'Black Han Sans', sans-serif;

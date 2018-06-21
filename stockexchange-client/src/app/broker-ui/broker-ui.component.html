@@ -1,0 +1,37 @@
+<div class="broker_ui">
+<div class="container">
+  <!-- <ul *ngFor="let broker of brokers">
+    <li>{{broker.username}}</li>
+   
+  </ul> -->
+     
+  <br><br><br><br>
+  <div>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+         
+          <h4 class="modal-title" style="text-align: center;">Meet our Brokers</h4>
+        </div>
+        <div class="modal-body">
+           <div class="list-group">
+              <ul *ngFor="let broker of brokers">
+                  <li class="broker_list"> <a href="#" class="list-group-item list-group-item-action" style="text-align: center;">{{broker.username}}</a></li> 
+                </ul>
+            
+      </div>
+        </div>
+        <div class="modal-footer" style="text-align: center">
+            <button type="button" class="btn btn-success btn-lg" (click)="fullPage()" >Next <span class="glyphicon glyphicon-menu-right"></span></button>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+</div>

@@ -8,6 +8,7 @@ export class UserService {
   private isUserLoggedIn ;
   private username;
 
+  //try true
   constructor() {
     this.isUserLoggedIn = false;
    }
@@ -19,4 +20,7 @@ export class UserService {
    getUserLoggedIn(){
      return this.isUserLoggedIn;
    }
+   
+   
+
 }
