@@ -54,7 +54,7 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         customer.setBroker_name(cus.getBroker_name());
         customer.setCustomer_name(cname);
         customer.setPrice(cus.getPrice());
-        customer.setPrice_bought(cus.getPrice());
+        customer.setPrice_bought(broker_stocks.getPrice());
         customer.setPrice_sell(0);
         customer.setQuantity(cqty);
         customer.setStocks(cus.getStock());
@@ -67,17 +67,24 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
             if (balance < broker_stocks.getPrice()) {
                 return "No Sufficient credits available";
             } else {
-                addToBrokerCustomer(customer, cqty, cname);
-                bankRepository.deduct(cname, broker_stocks.getPrice());
+                if (checkUserStock(broker_stocks.getBroker_name(), cname, broker_stocks.getStock())) {
+                    addToBrokerCustomer(customer, cqty, cname);
+                    bankRepository.deduct(cname, broker_stocks.getPrice());
+                } else {
+                    updateSameStocksForAUser(customer);
+                    bankRepository.deduct(cname, broker_stocks.getPrice());
+                }
             }
-
             return "Buy successfully";
         } else {
             return "No enough Stocks";
         }
     }
 
-    @Deprecated
+    /**
+     * Check for already added stocks
+     * @return
+     */
     @Override
     public boolean checkUserStock(String bname, String cusName, String stock) {
         Query query = entityManager.createNativeQuery("SELECT * FROM broker_customer WHERE broker_name = ? AND customer_name = ? AND  stocks = ?", Broker_customer.class);
@@ -94,6 +101,13 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
     @Override
     @Transactional
     public void updateSameStocksForAUser(Broker_customer broker_customer) {
+        Query query = entityManager.createNativeQuery("UPDATE  broker_customer set price_bought=(?), quantity=quantity+(?) WHERE customer_name=(?) AND broker_name=(?)  AND stocks=(?)", Broker_customer.class);
+        query.setParameter(1, broker_customer.getPrice_bought());
+        query.setParameter(2, broker_customer.getQuantity());
+        query.setParameter(3, broker_customer.getCustomer_name());
+        query.setParameter(4,broker_customer.getBroker_name());
+        query.setParameter(5,broker_customer.getStocks());
+        query.executeUpdate();
     }
 
     @Override
@@ -143,6 +157,7 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         query.setParameter(4,broker_customer.getStocks());
 
         if (query.executeUpdate() == 1) {
+            bankRepository.deposit(broker_customer.getCustomer_name(), broker_customer.getPrice_sell());
             return true;
         }else {
             return false;

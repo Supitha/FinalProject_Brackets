@@ -13,4 +13,6 @@ public interface BankRepositoryCustom {
     Bank balance(String username);
 
     void deduct(String accName, int amount);
+
+    void deposit(String accName, int amount);
  }

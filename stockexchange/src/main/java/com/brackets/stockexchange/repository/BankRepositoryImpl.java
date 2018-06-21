@@ -68,4 +68,12 @@ public class BankRepositoryImpl implements BankRepositoryCustom {
         query.executeUpdate();
     }
 
+    @Override
+    @Transactional
+    public void deposit(String accName, int amount) {
+        Query query = entityManager.createNativeQuery("UPDATE bank set balance=balance+(?) WHERE account_name=(?)", Bank.class);
+        query.setParameter(1, amount);
+        query.setParameter(2, accName);
+        query.executeUpdate();
+    }
 }
