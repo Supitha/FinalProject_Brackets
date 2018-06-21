@@ -8,7 +8,7 @@ import com.brackets.stockexchange.model.Broker_stocks;
  */
 public interface BrokerRepositoryCustom {
     void createNewCustomerForBroker(Broker_customer broker_customer);
-    boolean checkQty(Broker_stocks broker_stocks); 
+    String checkQty(Broker_stocks broker_stocks);
     void updateBrokerStocks(Broker_stocks broker_stocks,int qty);
     void addTomBrokerCustomer(Broker_stocks broker_stocks,int qty,String cname);
     void addToBrokerCustomer(Broker_customer broker_customer, int qty, String cname);

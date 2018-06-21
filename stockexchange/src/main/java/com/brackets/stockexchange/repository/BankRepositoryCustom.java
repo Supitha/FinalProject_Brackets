@@ -11,4 +11,6 @@ public interface BankRepositoryCustom {
     List<Bank> getAccByname(String account_name);
 
     Bank balance(String username);
+
+    void deduct(String accName, int amount);
  }

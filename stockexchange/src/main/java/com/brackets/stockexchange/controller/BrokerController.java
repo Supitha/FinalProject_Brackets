@@ -41,7 +41,7 @@ public class BrokerController {
         
     @RequestMapping(path = "/qty", method = RequestMethod.POST)
     public @ResponseBody String balance(@RequestBody Broker_stocks user) {
-            boolean cus = brokerRepository.checkQty(user);
+            String cus = brokerRepository.checkQty(user);
             return String.valueOf(cus);
     }
 
