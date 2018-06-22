@@ -53,7 +53,7 @@ public class BrokerController {
          broker_customer.setCustomer_name(b_customer.getCustomer_name());
          broker_customer.setBroker_name(b_customer.getBroker_name());
          broker_customer.setStocks(b_customer.getStocks());
-
+         broker_customer.setQuantity(b_customer.getQuantity());
          if (brokerRepository.sellStocks(broker_customer)) {
              return "Sold Successfully";
          }else {

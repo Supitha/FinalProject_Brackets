@@ -1,15 +1,12 @@
 package com.brackets.stockexchange.controller;
 
 import com.brackets.stockexchange.model.Stocks;
-import com.brackets.stockexchange.model.User;
 import com.brackets.stockexchange.repository.StocksRepository;
-import com.brackets.stockexchange.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

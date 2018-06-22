@@ -4,6 +4,7 @@ import com.brackets.stockexchange.model.Bank;
 import com.brackets.stockexchange.model.Broker;
 import com.brackets.stockexchange.model.Broker_customer;
 import com.brackets.stockexchange.model.Broker_stocks;
+import com.brackets.stockexchange.model.Stocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,6 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
 
     @PersistenceContext
     EntityManager entityManager;
-
 
     @Autowired
     private BankRepository bankRepository;
@@ -84,6 +84,7 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
 
     /**
      * Check for already added stocks
+     *
      * @return
      */
     @Override
@@ -96,18 +97,20 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         if (query.getResultList().size() == 0) {
             return true;
         }
-            return false;
+        return false;
     }
 
     @Override
     @Transactional
     public void updateSameStocksForAUser(Broker_customer broker_customer) {
+        Stocks stock = getPriceOfStock(broker_customer.getStocks());
+        int balance = (int) stock.getPrice();
         Query query = entityManager.createNativeQuery("UPDATE  broker_customer set price_bought=(?), quantity=quantity+(?) WHERE customer_name=(?) AND broker_name=(?)  AND stocks=(?)", Broker_customer.class);
-        query.setParameter(1, broker_customer.getPrice_bought());
+        query.setParameter(1, balance);
         query.setParameter(2, broker_customer.getQuantity());
         query.setParameter(3, broker_customer.getCustomer_name());
-        query.setParameter(4,broker_customer.getBroker_name());
-        query.setParameter(5,broker_customer.getStocks());
+        query.setParameter(4, broker_customer.getBroker_name());
+        query.setParameter(5, broker_customer.getStocks());
         query.executeUpdate();
     }
 
@@ -140,6 +143,14 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
     }
 
     @Override
+    public Stocks getPriceOfStock(String stname) {
+        Query query = entityManager.createNativeQuery("SELECT * FROM stocks WHERE stock_name = ?", Stocks.class);
+        query.setParameter(1, stname);
+        query.setMaxResults(1);
+        return (Stocks) query.getSingleResult();
+    }
+
+    @Override
     @Transactional
     public void addToBrokerCustomer(Broker_customer broker_customer, int qty, String cname) {
         Query query = entityManager.createNativeQuery("INSERT INTO broker_customer VALUES (?,?,?,?,?,?,?)", Broker_stocks.class);
@@ -147,27 +158,46 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         query.setParameter(2, broker_customer.getCustomer_name());
         query.setParameter(3, 0);
         query.setParameter(4, broker_customer.getPrice());
-        query.setParameter(5,0);
+        query.setParameter(5, 0);
         query.setParameter(6, qty);
         query.setParameter(7, broker_customer.getStocks());
         entityManager.persist(broker_customer);
         entityManager.flush();
     }
 
-
     @Override
     @Transactional
     public boolean sellStocks(Broker_customer broker_customer) {
-        Query query = entityManager.createNativeQuery("UPDATE  broker_customer set price_sell=(?) WHERE customer_name=(?) AND broker_name=(?)  AND stocks=(?)", Broker_customer.class);
-        query.setParameter(1, broker_customer.getPrice_sell());
-        query.setParameter(2, broker_customer.getCustomer_name());
-        query.setParameter(3, broker_customer.getBroker_name());
-        query.setParameter(4,broker_customer.getStocks());
+        if (checkQtyFromCustomer(broker_customer)) {
+            Stocks stock = getPriceOfStock(broker_customer.getStocks());
+            int balance = (int) stock.getPrice();
+            Query query = entityManager.createNativeQuery("UPDATE  broker_customer set price_sell=(?), quantity=quantity-(?) WHERE customer_name=(?) AND broker_name=(?)  AND stocks=(?)", Broker_customer.class);
+            query.setParameter(1, balance);
+            System.out.print("----------------------"+broker_customer.getQuantity());
+            query.setParameter(2, broker_customer.getQuantity());
+            query.setParameter(3, broker_customer.getCustomer_name());
+            query.setParameter(4, broker_customer.getBroker_name());
+            query.setParameter(5, broker_customer.getStocks());
+            if (query.executeUpdate() == 1) {
+                bankRepository.deposit(broker_customer.getCustomer_name(), balance*broker_customer.getQuantity());
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
-        if (query.executeUpdate() == 1) {
-            bankRepository.deposit(broker_customer.getCustomer_name(), broker_customer.getPrice_sell());
+    @Override
+    public boolean checkQtyFromCustomer(Broker_customer broker_customer) {
+        Query query = entityManager.createNativeQuery("SELECT * FROM broker_customer WHERE stocks = ?", Broker_customer.class);
+        query.setParameter(1, broker_customer.getStocks());
+        query.setMaxResults(1);
+        Broker_customer temp = (Broker_customer) query.getSingleResult();
+        if (broker_customer.getQuantity() <= temp.getQuantity()) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
