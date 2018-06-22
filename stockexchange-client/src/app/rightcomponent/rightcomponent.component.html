@@ -3,12 +3,12 @@
   <br>
  <div class="row">
      <div class="container set_buttons_div" >
-         <form>
+         <form (submit)="submitPForm($event)">
            <div class="form-group row">
              <div class="col-xs-2">
                <input class="form-control" id="ex1" type="text">
                <br>
-               <button type="button" class="btn btn-warning set_buttons">Set Time</button>
+               <button type="submit" class="btn btn-warning set_buttons">Set Price</button>
              </div>  
            </div>
          </form>
@@ -16,13 +16,13 @@
  </div>
  <div class="row">
      <div class="container set_buttons_div" >
-         <form>
+         <form (submit)="submitQForm($event)">
            <div class="form-group row">
              <div class="col-xs-2">
                <input class="form-control" id="ex1" type="text">
-               {{uname}}
+               <!-- {{uname}} -->
                <br>
-               <button type="button" class="btn btn-info set_buttons">Set Amount</button>
+               <button type="submit" class="btn btn-info set_buttons">Set Quantity</button>
              </div>  
            </div>
          </form>

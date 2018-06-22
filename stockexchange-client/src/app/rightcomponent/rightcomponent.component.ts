@@ -27,8 +27,25 @@ full_json_array = [];
     this.full_json_array.push(this.bname);
 
     console.log(this.full_json_array);
-
     
   }
+
+  submitPForm(e) {
+    var price = e.target.elements[0].value;
+    this.full_json_array.push(price);
+    console.log(price);
+}
+
+  submitQForm(e){
+    var quantiy = e.target.elements[0].value;
+    this.full_json_array.push(quantiy);
+    console.log(quantiy);
+
+    console.log(this.full_json_array);
+  }
+
+
+
+
 
 }
