@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import { DataShareService } from '../data-share.service';
 
 
 
@@ -11,12 +12,15 @@ import {Router} from '@angular/router';
 })
 export class BrokerUIComponent implements OnInit {
   brokers = [];
+  bname :string;
 
-  constructor(private _http:HttpClient,private router:Router) {
+  constructor(private _http:HttpClient,private router:Router,private data:DataShareService) {
   
    }
 
   ngOnInit() {
+    this.data.currentUname.subscribe(bname => this.bname = bname);
+
     this.load_broker_list();
   }
 
@@ -33,6 +37,8 @@ export class BrokerUIComponent implements OnInit {
     this.router.navigateByUrl('fullpage')  }
 
     onSelect(broker){
+      this.data.editBname(broker.username);
+
       console.log(broker.username);
     }
 
