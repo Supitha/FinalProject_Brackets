@@ -12,7 +12,7 @@
         </div>
     
   </div>
- <div class="row">
+ <!-- <div class="row">
      <div class="container set_buttons_div" >
          <form (submit)="submitPForm($event)">
            <div class="form-group row">
@@ -24,7 +24,7 @@
            </div>
          </form>
        </div>
- </div>
+ </div> -->
  <div class="row">
      <div class="container set_buttons_div" >
          <form (submit)="submitQForm($event)">
@@ -41,7 +41,7 @@
  </div>
  <br>
  <div class="row">
-         <a href="#" class="btn btn-sq-lg btn-success b_s_buttons" >
+         <a  class="btn btn-sq-lg btn-success b_s_buttons" (click)="buyButton()">
                  <i class="glyphicon glyphicon-thumbs-up fa-5x"></i><br/>
                  Buy
                </a>
