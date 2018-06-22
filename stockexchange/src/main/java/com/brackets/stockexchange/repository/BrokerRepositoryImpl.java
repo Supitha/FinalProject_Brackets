@@ -59,21 +59,23 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         customer.setPrice_sell(0);
         customer.setQuantity(cqty);
         customer.setStocks(cus.getStock());
+        Stocks stock = getPriceOfStock(customer.getStocks());
+        int stprice = (int) stock.getPrice();
         int qty = cus.getQuantity();
         if (cqty <= qty) {
             updateBrokerStocks(cus, cqty);
 
             Bank bank = bankRepository.balance(cname);
             int balance = (int) bank.getBalance();
-            if (balance < broker_stocks.getPrice()) {
+            if (balance < stprice*customer.getQuantity()) {
                 return "No Sufficient credits available";
             } else {
                 if (checkUserStock(broker_stocks.getBroker_name(), cname, broker_stocks.getStock())) {
                     addToBrokerCustomer(customer, cqty, cname);
-                    bankRepository.deduct(cname, broker_stocks.getPrice());
+                    bankRepository.deduct(cname, stprice*customer.getQuantity());
                 } else {
                     updateSameStocksForAUser(customer);
-                    bankRepository.deduct(cname, broker_stocks.getPrice());
+                    bankRepository.deduct(cname, stprice*customer.getQuantity());
                 }
             }
             return "Buy successfully";
