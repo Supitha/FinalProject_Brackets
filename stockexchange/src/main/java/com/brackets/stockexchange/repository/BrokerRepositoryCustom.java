@@ -1,7 +1,10 @@
 package com.brackets.stockexchange.repository;
 
+import com.brackets.stockexchange.model.Broker;
 import com.brackets.stockexchange.model.Broker_customer;
 import com.brackets.stockexchange.model.Broker_stocks;
+
+import java.util.List;
 
 /**
  * Created by rajith on 6/18/18.
@@ -15,4 +18,5 @@ public interface BrokerRepositoryCustom {
     boolean sellStocks(Broker_customer broker_customer);
     boolean checkUserStock(String b_name, String cusName, String stock);
     void updateSameStocksForAUser(Broker_customer broker_customer);
+    List<Broker> getcustomerinfo(Broker_customer b_name);
 }
