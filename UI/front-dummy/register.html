@@ -1,0 +1,81 @@
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Plaster|Source+Code+Pro" rel="stylesheet">  
+      <style>
+        body{
+            font-family: 'Plaster', cursive;
+              font-family: 'Black Han Sans', sans-serif;
+             
+              background: linear-gradient(-90deg, #0984e3,#fff );
+    
+        }
+
+
+      </style>
+    
+    </head>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+       <div class="container">
+           <br>
+           <br>
+           <br>
+           <br>
+          
+           <div class="row">
+           
+           <div id="login-overlay" class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="myModalLabel" style="text-align: center;">Welcome to StockExchange</h4>
+                    </div>
+                    <div class="modal-header">
+                            <h3 class="modal-title" id="myModalLabel" style="text-align: center;">Register</h4>
+                        </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="well">
+                                    <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+                                        <div class="form-group">
+                                            <label for="username" class="control-label">Username</label>
+                                            <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="control-label">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+                                            <span class="help-block"></span>
+                                        </div>
+                                        <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
+                                        <div class="checkbox">
+                                        </div>
+                                        <button type="submit" class="btn btn-warning btn-block" id="register_btn">Register</button>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="lead">Register now for <span class="text-success">FREE</span></p>
+                                <ul class="list-unstyled" style="line-height: 2">
+                                    <li><span class="fa fa-check text-success"></span> buy stocks</li>
+                                    <li><span class="fa fa-check text-success"></span> meet best brokers</li>
+                                    <li><span class="fa fa-check text-success"></span> understand the market</li>
+                                    <li><span class="fa fa-check text-success"></span> make millions <span style="color: green;">$$$</span> </li>
+                                </ul>
+                                <p><a href="/new-customer/" class="btn btn-info btn-block">Yes please, Login now!</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+            
+           </div>
+       </div>
+       
