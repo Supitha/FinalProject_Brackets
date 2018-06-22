@@ -32,4 +32,8 @@ export class BrokerUIComponent implements OnInit {
     console.log("Clicked");
     this.router.navigateByUrl('fullpage')  }
 
+    onSelect(broker){
+      console.log(broker.username);
+    }
+
 }

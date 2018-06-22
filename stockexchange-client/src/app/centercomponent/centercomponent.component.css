@@ -14,23 +14,41 @@
   }
 
   /*Set Time styling*/
-  .set_buttons_div{
+  /* .set_buttons_div{
     margin-left: 35px;
-  }
+  } */
 
   /*Set Time button styling*/
-  .set_buttons{
+  /* .set_buttons{
     font-family: 'Source Code Pro', monospace;
     font-family: 'Plaster', cursive;
     font-family: 'Black Han Sans', sans-serif;
-   }
+   } */
 
 
    /* Buy Sell button styling*/
-   .b_s_buttons{
+   /* .b_s_buttons{
     margin-left:50px;
     padding: 20px;
     font-family: 'Source Code Pro', monospace;
     font-family: 'Plaster', cursive;
     font-family: 'Black Han Sans', sans-serif;
-   }
+   } */
+
+   /* Marquee styling  */
+
+   ul li{
+    display: inline;
+  }
+
+  li {
+    padding:10px;
+    margin: 10px;
+  }
+
+  .marquee_row{
+    background-color: #F8F8F8;
+    font-family: 'Source Code Pro', monospace;
+    font-family: 'Plaster', cursive;
+    font-family: 'Black Han Sans', sans-serif;
+  }

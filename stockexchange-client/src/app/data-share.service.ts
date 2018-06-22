@@ -16,6 +16,17 @@ currentUname = this.username.asObservable();
 editUser(uname){
   this.username.next(uname)
 }
+
+
+private brokername = new BehaviorSubject<string>("YZ");
+//This is the one shared across 
+currentBname = this.brokername.asObservable();
+
+
+//Brokername detecting function
+editBname(bname){
+ this.brokername.next(bname)
+}
   
 
 }

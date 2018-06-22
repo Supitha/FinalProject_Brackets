@@ -16,7 +16,7 @@
         <div class="modal-body">
            <div class="list-group">
               <ul *ngFor="let broker of brokers">
-                  <li class="broker_list"> <a href="#" class="list-group-item list-group-item-action" style="text-align: center;">{{broker.username}}</a></li> 
+                  <li class="broker_list"> <a  class="list-group-item list-group-item-action" (click)="onSelect(broker)" style="text-align: center;">{{broker.username}}</a></li> 
                 </ul>
             
       </div>
