@@ -1,6 +1,17 @@
 <!--Right Panel-->
 <div class="col-md-2 right_panel">
   <br>
+  <div class="row">
+
+      <div class="form-group row">
+          <div  style="margin-left: 60px;margin-right:50px ">
+              <select [(ngModel)]="stockSelected" class="form-control"  (ngModelChange)="onSelected($event)"  id="sel1">
+                  <option *ngFor="let stock_name of stock_names" [value]="stock_name.stockName">{{stock_name.stockName}}</option>
+                </select>
+          </div>  
+        </div>
+    
+  </div>
  <div class="row">
      <div class="container set_buttons_div" >
          <form (submit)="submitPForm($event)">
