@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataShareService } from '../data-share.service';
 
 @Component({
   selector: 'app-rightcomponent',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rightcomponent.component.css']
 })
 export class RightcomponentComponent implements OnInit {
-
-  constructor() { }
+uname:string;
+  constructor(private data:DataShareService) { }
 
   ngOnInit() {
+    this.data.currentUname.subscribe(uname => this.uname = uname);
+    //In here user takes the uname.
+    console.log(this.uname);
   }
 
 }

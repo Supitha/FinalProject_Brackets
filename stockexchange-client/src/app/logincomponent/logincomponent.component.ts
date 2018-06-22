@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { UserService } from '../user.service';
 
 import {HttpModule,Http,Headers,RequestOptions} from '@angular/http';
+import { DataShareService } from '../data-share.service';
 
 @Component({
   selector: 'app-logincomponent',
@@ -10,14 +11,18 @@ import {HttpModule,Http,Headers,RequestOptions} from '@angular/http';
   styleUrls: ['./logincomponent.component.css']
 })
 export class LogincomponentComponent implements OnInit {
+uname:string;
+editUser:string;
 
+  constructor(private router:Router,private user:UserService,private http:Http,private data:DataShareService) { }
 
-  constructor(private router:Router,private user:UserService,private http:Http) { }
-
+  //Didn't put this in to the logincomponent frontend {uname }
   ngOnInit() {
+    this.data.currentUname.subscribe(uname => this.uname = uname);
   }
 
 
+  
 
   loginUser(e){
    e.preventDefault();
@@ -33,7 +38,9 @@ export class LogincomponentComponent implements OnInit {
       "username":username,
       "password":password 
     }
-      
+    
+    //This one passes the username to the editUser() in service
+    this.data.editUser(username);
 
     console.log(username,password);
 

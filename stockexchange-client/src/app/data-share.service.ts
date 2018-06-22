@@ -6,17 +6,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataShareService {
 
-private messageSource = new BehaviorSubject<string>("default message");
-currentMessage = this.messageSource.asObservable();
+private username = new BehaviorSubject<string>("XY");
+//This is the one shared across components
+currentUname = this.username.asObservable();
 
   constructor() { }
 
-changeMessage(message:string){
-  this.messageSource.next(message)
+//UserName detecting function
+editUser(uname){
+  this.username.next(uname)
 }
-  public static getUserName(){
-
-  }
-
+  
 
 }
