@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Created by rajith on 6/18/18.
@@ -108,6 +109,13 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         query.setParameter(4,broker_customer.getBroker_name());
         query.setParameter(5,broker_customer.getStocks());
         query.executeUpdate();
+    }
+
+    @Override
+    public List<Broker> getcustomerinfo(Broker_customer b_name) {
+        Query query = entityManager.createNativeQuery("SELECT * FROM broker_customer WHERE broker_name = ?", Broker_customer.class);
+        query.setParameter(1, b_name.getBroker_name());
+        return query.getResultList();
     }
 
     @Override

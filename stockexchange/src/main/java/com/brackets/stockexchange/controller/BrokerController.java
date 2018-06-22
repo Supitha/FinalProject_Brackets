@@ -42,6 +42,7 @@ public class BrokerController {
     @RequestMapping(path = "/qty", method = RequestMethod.POST)
     public @ResponseBody String balance(@RequestBody Broker_stocks user) {
             String cus = brokerRepository.checkQty(user);
+
             return String.valueOf(cus);
     }
 
@@ -60,4 +61,10 @@ public class BrokerController {
          }
     }
 
+    @RequestMapping(path = "/portfolio", method = RequestMethod.POST)
+    public @ResponseBody Iterable<Broker> getAllCustomerInfo(@RequestBody Broker_customer broker_cus) {
+        Broker_customer broker_customer = new Broker_customer();
+        broker_customer.setBroker_name(broker_cus.getBroker_name());
+        return brokerRepository.getcustomerinfo(broker_customer);
+    }
 }
