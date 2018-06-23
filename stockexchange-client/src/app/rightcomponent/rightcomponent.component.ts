@@ -3,6 +3,8 @@ import { DataShareService } from '../data-share.service';
 
 import { HttpClient } from '@angular/common/http';
 
+import {HttpModule,Http,Headers,RequestOptions} from '@angular/http';
+
 
 @Component({
   selector: 'app-rightcomponent',
@@ -14,7 +16,7 @@ uname:string;
 stock_names = [];
 bname:string;
 full_json_array = [];
-  constructor(private data:DataShareService, private _http:HttpClient) { }
+  constructor(private data:DataShareService, private _http:HttpClient,private http:Http) { }
 
   ngOnInit() {
     this.loadDetailstoDropdown();
@@ -34,19 +36,13 @@ full_json_array = [];
     
   }
 
-  submitPForm(e) {
-    var price = e.target.elements[0].value;
-    this.full_json_array.push(price);
-    console.log(price);
-}
+//   submitPForm(e) {
+//     var price = e.target.elements[0].value;
+//     this.full_json_array.push(price);
+//     console.log(price);
+// }
 
-  submitQForm(e){
-    var quantiy = e.target.elements[0].value;
-    this.full_json_array.push(quantiy);
-    console.log(quantiy);
 
-    console.log(this.full_json_array);
-  }
 
   loadDetailstoDropdown(){
     return this._http.get("http://localhost:8080/stocks/all")
@@ -60,6 +56,50 @@ full_json_array = [];
     this.full_json_array.push(e);
 console.log(this.full_json_array);
   }
+  
+
+  submitQForm(e){
+    var quantiy = e.target.elements[0].value;
+    this.full_json_array.push(quantiy);
+    console.log(quantiy);
+
+    console.log(JSON.stringify(this.full_json_array));
+    this.convertToJsonObj();
+  }
+
+
+
+  convertToJsonObj(){
+    var cusName =this.full_json_array[0];
+    var broker_name = this.full_json_array[1];
+    var stock = this.full_json_array[2];
+    var quantiy = this.full_json_array[3];
+
+   
+    let array_Details = {
+       "cusName" : cusName,
+       "broker_name":broker_name,
+       "stock":stock,
+       "quantity": quantiy
+    }
+    
+    return array_Details;
+    // console.log(array_Details);
+  }
+
+  message:any
+
+  buyButton(){
+    var array_Details = this.convertToJsonObj();
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this.http.post("http://localhost:8080/broker/qty", JSON.stringify(array_Details),options).subscribe((data) => {
+    });
+  
+  }
+
+
 
 
 }
