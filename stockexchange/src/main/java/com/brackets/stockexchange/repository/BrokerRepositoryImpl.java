@@ -155,11 +155,14 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
     @Override
     @Transactional
     public void addToBrokerCustomer(Broker_customer broker_customer, int qty, String cname) {
+        Stocks stock = getPriceOfStock(broker_customer.getStocks());
+        int balance = (int) stock.getPrice();
+        broker_customer.setPrice_bought(balance);
         Query query = entityManager.createNativeQuery("INSERT INTO broker_customer VALUES (?,?,?,?,?,?,?)", Broker_stocks.class);
         query.setParameter(1, broker_customer.getBroker_name());
         query.setParameter(2, broker_customer.getCustomer_name());
         query.setParameter(3, 0);
-        query.setParameter(4, broker_customer.getPrice());
+        query.setParameter(4, broker_customer.getPrice_bought());
         query.setParameter(5, 0);
         query.setParameter(6, qty);
         query.setParameter(7, broker_customer.getStocks());
@@ -175,7 +178,6 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
             int balance = (int) stock.getPrice();
             Query query = entityManager.createNativeQuery("UPDATE  broker_customer set price_sell=(?), quantity=quantity-(?) WHERE customer_name=(?) AND broker_name=(?)  AND stocks=(?)", Broker_customer.class);
             query.setParameter(1, balance);
-            System.out.print("----------------------"+broker_customer.getQuantity());
             query.setParameter(2, broker_customer.getQuantity());
             query.setParameter(3, broker_customer.getCustomer_name());
             query.setParameter(4, broker_customer.getBroker_name());
