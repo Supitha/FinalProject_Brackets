@@ -16,7 +16,13 @@ uname:string;
 stock_names = [];
 bname:string;
 full_json_array = [];
-  constructor(private data:DataShareService, private _http:HttpClient,private http:Http) { }
+isLoadbalance: boolean;
+
+  constructor(private data:DataShareService, private _http:HttpClient,private http:Http) {
+    this.data.isLoadbalance.subscribe( value => {
+      this.isLoadbalance = value;
+  });
+   }
 
   ngOnInit() {
     this.loadDetailstoDropdown();
@@ -95,6 +101,7 @@ console.log(this.full_json_array);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     this.http.post("http://localhost:8080/broker/qty", JSON.stringify(array_Details),options).subscribe((data) => {
+      this.data.isLoadbalance.next(true);
     });
   
   }

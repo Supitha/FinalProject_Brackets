@@ -195,8 +195,9 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
 
     @Override
     public boolean checkQtyFromCustomer(Broker_customer broker_customer) {
-        Query query = entityManager.createNativeQuery("SELECT * FROM broker_customer WHERE stocks = ?", Broker_customer.class);
+        Query query = entityManager.createNativeQuery("SELECT * FROM broker_customer WHERE stocks = ? and customer_name =?", Broker_customer.class);
         query.setParameter(1, broker_customer.getStocks());
+        query.setParameter(2, broker_customer.getCustomer_name());
         query.setMaxResults(1);
         Broker_customer temp = (Broker_customer) query.getSingleResult();
         if (broker_customer.getQuantity() <= temp.getQuantity()) {

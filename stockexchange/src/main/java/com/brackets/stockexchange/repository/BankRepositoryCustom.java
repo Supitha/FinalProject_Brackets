@@ -15,4 +15,7 @@ public interface BankRepositoryCustom {
     void deduct(String accName, int amount);
 
     void deposit(String accName, int amount);
- }
+
+    List<Bank> getWinner(Bank bank);
+
+}

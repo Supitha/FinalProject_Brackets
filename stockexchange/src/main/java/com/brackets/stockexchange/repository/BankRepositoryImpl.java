@@ -76,4 +76,10 @@ public class BankRepositoryImpl implements BankRepositoryCustom {
         query.setParameter(2, accName);
         query.executeUpdate();
     }
+
+    @Override
+    public List<Bank> getWinner(Bank bank) {
+        Query query = entityManager.createNativeQuery("Select * from bank order by balance DESC", Bank.class);
+        return query.getResultList();
+    }
 }
