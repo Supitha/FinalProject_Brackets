@@ -140,12 +140,8 @@ console.log(this.full_json_array);
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-<<<<<<< Updated upstream
-    this.http.post("http://localhost:8080/broker/qty", JSON.stringify(array_Details),options).subscribe((data) => {
-      this.data.isLoadbalance.next(true);
-=======
+
     this.http.post("http://localhost:8080/broker/qty", JSON.stringify(array_model),options).subscribe((data) => {
->>>>>>> Stashed changes
     });
   
   
