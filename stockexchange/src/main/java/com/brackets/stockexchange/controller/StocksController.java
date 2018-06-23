@@ -82,6 +82,7 @@ public class StocksController {
         /////////////////////TODO: Delete following
         aiRepository.createBankAccountAI();
         aiRepository.buyStocksAI();
+        aiRepository.sellStockAI();
         Broker_stocks a = aiRepository.selectCompanyAI();
         System.out.print(a);
         updateStocksPrices();

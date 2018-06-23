@@ -6,6 +6,7 @@
 package com.brackets.stockexchange.repository;
 
 import com.brackets.stockexchange.model.Bank;
+import com.brackets.stockexchange.model.Broker_customer;
 import com.brackets.stockexchange.model.Broker_stocks;
 import com.brackets.stockexchange.model.Stocks;
 import com.brackets.stockexchange.model.User;
@@ -32,7 +33,7 @@ public class AIRepositoryImpl implements AIRepositoryCustom{
     @Autowired
     private BrokerRepository brokerRepository;
     
-    String[] companyList = {};
+    ArrayList companyList =  new ArrayList();
     
     @Override
     public Stocks selectCompany(Stocks st) {
@@ -50,6 +51,16 @@ public class AIRepositoryImpl implements AIRepositoryCustom{
         query.setMaxResults(1);
 
         return (Broker_stocks) query.getSingleResult();
+    }
+    
+    public Broker_customer selectStocksToSell(String stname) {
+        String cusname = "John";
+        Query query = entityManager.createNativeQuery("select * from broker_customer where stocks = ? and customer_name = ?", Broker_customer.class);
+        query.setParameter(1, stname);
+        query.setParameter(2, cusname);
+        query.setMaxResults(1);
+
+        return (Broker_customer) query.getSingleResult();
     }
     
     @Override
@@ -94,9 +105,24 @@ public class AIRepositoryImpl implements AIRepositoryCustom{
         qty.add(4);
         Collections.shuffle(qty);
         Broker_stocks st = selectCompanyAI();
+        companyList.add(st.getStock());
         st.setQuantity((int)qty.get(0));
         st.setCusName("John");
         brokerRepository.checkQty(st);
+    }
+    
+    @Override
+    public void sellStockAI(){
+        Collections.shuffle(companyList);
+        Broker_customer stockSell = selectStocksToSell((String)companyList.get(0));
+        for(int i=0;i<companyList.size();i++){
+            String temp = (String)companyList.get(i);
+            if(temp==stockSell.getStocks()){
+                companyList.remove(i);
+                break;
+            }
+        }
+        brokerRepository.sellStocks(stockSell);
     }
     
 }

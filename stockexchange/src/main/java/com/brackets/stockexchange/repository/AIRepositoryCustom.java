@@ -5,6 +5,7 @@
  */
 package com.brackets.stockexchange.repository;
 
+import com.brackets.stockexchange.model.Broker_customer;
 import com.brackets.stockexchange.model.Broker_stocks;
 import com.brackets.stockexchange.model.Stocks;
 
@@ -18,4 +19,6 @@ public interface AIRepositoryCustom {
     Broker_stocks selectCompanyAI();
     void buyStocksAI();
     Broker_stocks selectBroker(Stocks st);
+    void sellStockAI();
+    Broker_customer selectStocksToSell(String stname);
 }
