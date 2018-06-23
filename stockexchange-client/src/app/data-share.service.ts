@@ -6,9 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataShareService {
 
- public isLoadbalance: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-private username = new BehaviorSubject<string>("XY");
+  private username = new BehaviorSubject<string>("XY");
 //This is the one shared across components
 currentUname = this.username.asObservable();
 
