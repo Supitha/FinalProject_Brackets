@@ -1,6 +1,8 @@
 package com.brackets.stockexchange.controller;
 
+import com.brackets.stockexchange.model.Broker_stocks;
 import com.brackets.stockexchange.model.Stocks;
+import com.brackets.stockexchange.repository.AIRepository;
 import com.brackets.stockexchange.repository.StocksRepository;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +21,8 @@ import java.util.logging.Logger;
 public class StocksController {
     @Autowired
     private StocksRepository stocksRepository;
+    @Autowired
+    private AIRepository aiRepository ;
     
     int updateStocksPricesAlgo() {
         ArrayList sectorTrend = new ArrayList();
@@ -75,7 +79,13 @@ public class StocksController {
     public @ResponseBody
     String createNewStock(@RequestBody Stocks stocks) {
         stocksRepository.save(stocks);
+        /////////////////////TODO: Delete following
+        aiRepository.createBankAccountAI();
+        aiRepository.buyStocksAI();
+        Broker_stocks a = aiRepository.selectCompanyAI();
+        System.out.print(a);
         updateStocksPrices();
+        /////////////////////
         return "saved";
     }
 
