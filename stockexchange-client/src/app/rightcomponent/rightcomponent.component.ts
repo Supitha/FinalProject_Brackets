@@ -142,6 +142,8 @@ console.log(this.full_json_array);
     let options = new RequestOptions({ headers: headers });
 
     this.http.post("http://localhost:8080/broker/qty", JSON.stringify(array_model),options).subscribe((data) => {
+      alert(data.text());
+
     });
   
   
@@ -157,9 +159,9 @@ console.log(this.full_json_array);
     var quantity = this.Model.quantity;
    
     let array_model = {
-      "cusName" : cusName,
+      "customer_name" : cusName,
       "broker_name" : broker_name,
-      "stock" : stock,
+      "stocks" : stock,
       "quantity":quantity
 
     }
@@ -175,6 +177,7 @@ console.log(this.full_json_array);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     this.http.post("http://localhost:8080/broker/sell", JSON.stringify(array_model),options).subscribe((data) => {
+      alert(data.text());
     });
   
   
