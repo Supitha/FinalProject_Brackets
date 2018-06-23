@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http, RequestOptions,Headers } from '@angular/http';
 import { DataShareService } from '../data-share.service';
 
@@ -7,8 +7,8 @@ import { DataShareService } from '../data-share.service';
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.css']
 })
-export class TopNavComponent implements OnInit {
-
+export class TopNavComponent implements OnInit, OnDestroy {
+  private timer;
   uname:string;
 
   constructor(private http:Http, private data: DataShareService) { }
@@ -16,8 +16,15 @@ export class TopNavComponent implements OnInit {
 
   ngOnInit() {
     this.data.currentUname.subscribe(uname => this.uname = uname);
-    this.loadbalance()
-  }
+    this.timer = setInterval(() => {
+      this.loadbalance();
+  }, 1000);
+ }
+  
+ ngOnDestroy() {
+  // Will clear when component is destroyed e.g. route is navigated away from.
+  clearInterval(this.timer);
+}
 
   number:any
 
