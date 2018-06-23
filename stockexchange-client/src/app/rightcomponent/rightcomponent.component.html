@@ -1,58 +1,51 @@
 <!--Right Panel-->
 <div class="col-md-2 right_panel">
-  <br>
+<!--Form start-->
+<form #myForm="ngForm" novalidate>
   <div class="row">
 
       <div class="form-group row">
           <div  style="margin-left: 60px;margin-right:50px ">
-              <select [(ngModel)]="stockSelected" class="form-control"  (ngModelChange)="onSelected($event)"  id="sel1">
-                  <option *ngFor="let stock_name of stock_names" [value]="stock_name.stockName">{{stock_name.stockName}}</option>
-                </select>
+          <select class="form-control"  (change)="onSelected($event)" id="sel1" name="stock" [(ngModel)]="Model.stockname">
+              <option *ngFor="let stock_name of stock_names" [value]="stock_name.stockName">{{stock_name.stockName}}</option>
+          </select>
           </div>  
         </div>
-    
+
   </div>
+
+ <div class="row">
+     <div class="container set_buttons_div" >
+           <div class="form-group row">
+             <div class="col-xs-2">
+               <input class="form-control" id="ex1" type="text" name="quantity" [(ngModel)]="Model.quantity">
+               <br>
+             </div>  
+           </div>
+       </div>
+ </div>
+ <br>
+ <div class="row">
+    <a  class="btn btn-sq-lg btn-success b_s_buttons" (click)="formBSubmit()">
+     <i class="glyphicon glyphicon-thumbs-up fa-5x"></i><br/>
+     Buy
+   </a>
+ </div>
+ <br>
+ <div class="row">
+  <a  class="btn btn-sq-lg btn-danger b_s_buttons" (click)="formSSubmit()">
+   <i class="glyphicon glyphicon-thumbs-down fa-5x"></i><br/>
+   Sell
+ </a>
+</div>
+</form>
+ <br>
  <!-- <div class="row">
-     <div class="container set_buttons_div" >
-         <form (submit)="submitPForm($event)">
-           <div class="form-group row">
-             <div class="col-xs-2">
-               <input class="form-control" id="ex1" type="text">
-               <br>
-               <button type="submit" class="btn btn-warning set_buttons">Set Price</button>
-             </div>  
-           </div>
-         </form>
-       </div>
- </div> -->
- <div class="row">
-     <div class="container set_buttons_div" >
-         <form (submit)="submitQForm($event)">
-           <div class="form-group row">
-             <div class="col-xs-2">
-               <input class="form-control" id="ex1" type="text">
-               <!-- {{uname}} -->
-               <br>
-               <button type="submit" class="btn btn-info set_buttons">Set Quantity</button>
-             </div>  
-           </div>
-         </form>
-       </div>
- </div>
- <br>
- <div class="row">
-         <a  class="btn btn-sq-lg btn-success b_s_buttons" (click)="buyButton()">
-                 <i class="glyphicon glyphicon-thumbs-up fa-5x"></i><br/>
-                 Buy
-               </a>
- </div>
- <br>
- <div class="row">
          <a href="#" class="btn btn-sq-lg btn-danger b_s_buttons" >
                  <i class="glyphicon glyphicon-thumbs-down fa-5x"></i><br/>
                  Sell
                </a>
- </div>
+ </div> -->
 
    
 
