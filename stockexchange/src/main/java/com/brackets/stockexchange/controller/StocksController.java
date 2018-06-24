@@ -1,8 +1,6 @@
 package com.brackets.stockexchange.controller;
 
-import com.brackets.stockexchange.model.Broker_stocks;
 import com.brackets.stockexchange.model.Stocks;
-import com.brackets.stockexchange.repository.AIRepository;
 import com.brackets.stockexchange.repository.StocksRepository;
 import java.util.ArrayList;
 import java.util.Collections;

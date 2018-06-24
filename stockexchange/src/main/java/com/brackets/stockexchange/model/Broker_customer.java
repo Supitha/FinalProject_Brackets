@@ -1,7 +1,5 @@
 package com.brackets.stockexchange.model;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.boot.jackson.JsonComponent;
 
 import javax.persistence.*;
