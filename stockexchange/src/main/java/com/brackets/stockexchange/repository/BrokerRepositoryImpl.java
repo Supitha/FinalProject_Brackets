@@ -122,6 +122,14 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         query.setParameter(1, b_name.getBroker_name());
         return query.getResultList();
     }
+    
+    @Override
+    @Transactional
+    public void updateBrokerStocksQty() {
+        Query query = entityManager.createNativeQuery("UPDATE broker_stocks SET quantity = (?)");
+        query.setParameter(1, 10000);
+        query.executeUpdate();
+    }
 
     @Override
     @Transactional
@@ -130,6 +138,7 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         query.setParameter(1, qty);
         query.setParameter(2, broker_stocks.getStock());
         query.executeUpdate();
+        updateBrokerStocksQty();
     }
 
     @Deprecated
