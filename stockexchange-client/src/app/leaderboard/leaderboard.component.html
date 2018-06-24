@@ -1,0 +1,40 @@
+<app-top-nav></app-top-nav>
+ <div class="broker_ui">
+    <div class="container">
+       <!-- <ul *ngFor="let leader of leaders">
+        <li>{{leader.account_name}}</li>
+       
+      </ul>  -->
+         
+      
+      <div>
+        <div class="modal-dialog modal-lg " style="overflow-y: initial !important">
+          <div class="modal-content">
+            <div class="modal-header">
+             
+              <h4 class="modal-title" style="text-align: center;">Leaderboard</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: auto;     max-height: calc(90vh - 150px);
+            ">
+               <div class="list-group">
+                  <ul *ngFor="let leader of leaders">
+                      <li class="broker_list" style="text-align: center" [ngStyle]="{'background-color': leader.account_name===uname ? ' #66ff66' : null}"> {{leader.account_name}} - {{leader.balance}} </li> 
+                      <!-- <li class="broker_list" style="text-align: center"  > {{leader.account_name}} - {{leader.balance}} </li>  -->
+
+                    </ul>
+                
+          </div>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+    
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    </div>
+    </div>
