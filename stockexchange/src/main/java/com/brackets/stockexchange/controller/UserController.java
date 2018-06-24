@@ -27,6 +27,8 @@ public class UserController {
     private BankRepository bankRepository;
     @Autowired
     private AIRepository aiRepository ;
+    @Autowired
+    private StocksController stocksController;
 
     @RequestMapping(path = "/save", method = RequestMethod.POST)
     public @ResponseBody String createNewUser(@RequestBody User user) {
@@ -38,6 +40,7 @@ public class UserController {
             bank.setBalance(1000);
             bankRepository.createNewAccountForUser(bank);
             aiRepository.createBankAccountAI();//AI account creation
+            stocksController.updateStocksPrices();
             return "Saved";
         } else {
             return "User already exists";
