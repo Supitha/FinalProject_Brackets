@@ -1,0 +1,53 @@
+<app-top-nav></app-top-nav>
+
+<div class="broker_ui">
+    <div class="container">
+    
+      <br><br><br><br>
+      <div>
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+             
+              <h4 class="modal-title" style="text-align: center;">Broker {{bname}}'s History</h4>
+            </div>
+            <div class="modal-body">
+               <div class="list-group">
+               
+                    <div>
+                     
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Customer name</th>
+                            <th>Stocks</th>
+                            <th>Price bought</th>
+                            <th>Price sold</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                        <tr *ngFor="let getBdetails1 of getBdetails">
+                          <td> {{getBdetails1.customer_name}}</td>
+                          <td>{{getBdetails1.stocks}} </td>
+                          <td>{{getBdetails1.price_bought}}</td>
+                          <td>{{getBdetails1.price_sell}}</td>
+                        </tr>
+                      </tbody>
+                      </table>
+                    </div>
+              
+          </div>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+    
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    </div>
+    </div>

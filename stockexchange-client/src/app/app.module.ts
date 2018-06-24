@@ -22,6 +22,7 @@ import {HelperService} from './helper.service';
 import {FormsModule} from '@angular/forms';
 import { BrokerUIComponent } from './broker-ui/broker-ui.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { PortfoliobComponent } from './portfoliob/portfoliob.component';
 
 const appRoutes:Routes = [
   {
@@ -45,6 +46,10 @@ const appRoutes:Routes = [
   {
     path:'fullpage/leaderBoard',
     component:LeaderboardComponent
+  },
+  {
+    path:'fullpage/portfoliob',
+    component:PortfoliobComponent
   }
 ];
 
@@ -60,7 +65,8 @@ const appRoutes:Routes = [
     LogincomponentComponent,
     FullpageComponent,
     BrokerUIComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    PortfoliobComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

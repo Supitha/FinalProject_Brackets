@@ -4,6 +4,7 @@ import { DataShareService } from '../data-share.service';
 import { HttpClient } from '@angular/common/http';
 
 import {Http,Headers,RequestOptions} from '@angular/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,12 +19,13 @@ export class RightcomponentComponent implements OnInit {
     event.returnValue = false;
 }
 
+count:number = 0;
 uname:string;
 stock_names = [];
 bname:string;
 full_json_array = [];
 
-  constructor(private data:DataShareService, private _http:HttpClient,private http:Http) {}
+  constructor(private data:DataShareService, private _http:HttpClient,private http:Http,private router:Router) {}
 
   ngOnInit() {
     this.loadDetailstoDropdown();
@@ -43,13 +45,6 @@ full_json_array = [];
     
   }
 
-//   submitPForm(e) {
-//     var price = e.target.elements[0].value;
-//     this.full_json_array.push(price);
-//     console.log(price);
-// }
-
-
 
   loadDetailstoDropdown(){
     return this._http.get("http://localhost:8080/stocks/all")
@@ -65,45 +60,7 @@ console.log(this.full_json_array);
   }
   
 
-  // submitQForm(e){
-  //   var quantiy = e.target.elements[0].value;
-  //   this.full_json_array.push(quantiy);
-  //   console.log(quantiy);
 
-  //   console.log(JSON.stringify(this.full_json_array));
-  //   this.convertToJsonObj();
-  // }
-
-
-
-  // convertToJsonObj(){
-  //   var cusName =this.full_json_array[0];
-  //   var broker_name = this.full_json_array[1];
-  //   var stock = this.full_json_array[2];
-  //   var quantiy = this.full_json_array[3];
-
-   
-  //   let array_Details = {
-  //      "cusName" : cusName,
-  //      "broker_name":broker_name,
-  //      "stock":stock,
-  //      "quantity": quantiy
-  //   }
-    
-  //   return array_Details;
-  //   // console.log(array_Details);
-  // }
-
-
-  // buyButton(){
-  //   var array_Details = this.convertToJsonObj();
-
-  //   let headers = new Headers({ 'Content-Type': 'application/json' });
-  //   let options = new RequestOptions({ headers: headers });
-  //   this.http.post("http://localhost:8080/broker/qty", JSON.stringify(array_Details),options).subscribe((data) => {
-  //   });
-  
-  // }
 
    Model = {
     stockname: '',
@@ -126,21 +83,17 @@ console.log(this.full_json_array);
     }
 
     console.log(array_model);
-    // var stock = this.onSelected(e);
-    // console.log(stock);
-    //  var quantity =  e.target.elements[0].value;
-   // console.log(quantity);
-
   
+
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    this.http.post("http://localhost:8080/broker/qty", JSON.stringify(array_model),options).subscribe((data) => {
+    this.http.post("http://localhost:8080/broker/buy", JSON.stringify(array_model),options).subscribe((data) => {
       alert(data.text());
     });
   
   
-
+     this.clickCount();
   }
 
 
@@ -160,12 +113,7 @@ console.log(this.full_json_array);
     }
 
     console.log(array_model);
-    // var stock = this.onSelected(e);
-    // console.log(stock);
-    //  var quantity =  e.target.elements[0].value;
-   // console.log(quantity);
-
-  
+   
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -173,7 +121,16 @@ console.log(this.full_json_array);
       alert(data.text());
     });
   
-  
+  this.clickCount();
+  }
+
+  clickCount(){
+    this.count++
+    console.log(this.count);
+    if(this.count == 5){
+      alert("Game Over, You have tried all of your chances, Now go to leaderboard");
+      this.router.navigate(['leaderboard'])
+    }
   }
 
 }
