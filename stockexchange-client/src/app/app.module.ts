@@ -14,8 +14,10 @@ import { CentercomponentComponent } from './centercomponent/centercomponent.comp
 import { RightcomponentComponent } from './rightcomponent/rightcomponent.component';
 import { LogincomponentComponent } from './logincomponent/logincomponent.component';
 import { FullpageComponent } from './fullpage/fullpage.component';
+
 import { UserService } from './user.service';
 import { AuthguardGuard } from './authguard.guard';
+import {HelperService} from './helper.service';
 
 import {FormsModule} from '@angular/forms';
 import { BrokerUIComponent } from './broker-ui/broker-ui.component';
@@ -61,7 +63,7 @@ const appRoutes:Routes = [
     FormsModule,
     HttpClientModule 
   ],
-  providers: [UserService,AuthguardGuard],
+  providers: [UserService,AuthguardGuard,HelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

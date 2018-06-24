@@ -15,7 +15,9 @@
 
    <div class="row">
     
-  <div id="chartContainer" class="graph_styling"></div>
-  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <div *ngIf="chart">
+          <canvas id="canvas">{{chart}}</canvas>
+        
+        </div>
 </div>
 </div>
