@@ -80,7 +80,7 @@ public class StocksController {
         return "saved";
     }
     
-    @RequestMapping(path = "/stdynamic", method = RequestMethod.POST)
+    @RequestMapping(path = "/stdeviation", method = RequestMethod.POST)
     public @ResponseBody
     String stockDeviation() {
         updateStocksPrices();
