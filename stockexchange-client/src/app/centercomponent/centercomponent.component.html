@@ -4,17 +4,17 @@
   </ul> -->
 
 <!--Graph Content-->
- <div class="col-md-9 graph-content" >
+ <div class="col-md-9 graph-content"  >
    <br>
-   <div class="row marquee_row">
+   <div class="row marquee_row" >
      <br>
-    <marquee scrollamount="3"   ><ul style="display: inline;" *ngFor= "let one_stock_detail of stock_details"> <li style="display: inline;">{{one_stock_detail.stockName}} price for ${{one_stock_detail.price}} </li>  </ul> </marquee>
+    <marquee scrollamount="2"   ><ul style="display: inline;" *ngFor= "let one_stock_detail of stock_details"> <li style="display: inline;">{{one_stock_detail.stockName}} price for ${{one_stock_detail.price}} </li>  </ul> </marquee>
 
   </div>
 
 
    <div class="row">
-     <h1>hello</h1>
+    
   <div id="chartContainer" class="graph_styling"></div>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </div>

@@ -75,13 +75,13 @@ body{
   
       /*Sidebar navigation (Edited the margin-top and height)*/
       .main-menu {
-          margin-top:75px;
+      margin-top:5%;
       background:#F8F8F8;
       border-right:1px solid #e5e5e5;
       position:absolute;
       top:0;
       bottom:0;
-      height:80%;
+      height:15%;
       left:0;
       width:60px;
       overflow:hidden;

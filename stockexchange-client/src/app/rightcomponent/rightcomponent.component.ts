@@ -3,7 +3,7 @@ import { DataShareService } from '../data-share.service';
 
 import { HttpClient } from '@angular/common/http';
 
-import {HttpModule,Http,Headers,RequestOptions} from '@angular/http';
+import {Http,Headers,RequestOptions} from '@angular/http';
 
 
 @Component({
