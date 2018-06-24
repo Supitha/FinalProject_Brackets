@@ -107,7 +107,7 @@ body{
       border-collapse:collapse;
       border-spacing:0;
       color:#999;
-       font-family: arial;
+      font-family: 'Abel', sans-serif;
       font-size: 14px;
       text-decoration:none;
       -webkit-transform:translateZ(0) scale(1,1);
@@ -131,7 +131,8 @@ body{
       display:table-cell;
       vertical-align:middle;
       width:190px;
-        font-family: 'Titillium Web', sans-serif;
+      font-family: 'Abel', sans-serif;
+
       }
       
       .main-menu>ul.logout {
@@ -177,7 +178,8 @@ body{
       height: 100%;
       }
       @font-face {
-        font-family: 'Titillium Web';
+        font-family: 'Abel', sans-serif;
+
         font-style: normal;
         font-weight: 300;
         src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
@@ -187,19 +189,22 @@ body{
   
       /* Current Balance Button */
       .curr_bal_button{
-        margin: 8px;font-size:10px;font-family: 'Orbitron', sans-serif;
+        margin: 8px;font-size:10px;font-family: 'Abel', sans-serif;
+
       }
   
       /* Deposit Button*/
       .deposit_button{
-            margin: 8px;font-family: 'Source Code Pro', monospace;
-            font-family: 'Plaster', cursive;
-            font-family: 'Black Han Sans', sans-serif;
+            margin: 8px;font-family: 'Abel', sans-serif;
+
+            font-family: 'Abel', sans-serif;
+
       }
   
       /*Dropdown font*/
       .dropdown_font{
-        font-size:15px;font-family: 'Orbitron', sans-serif;
+        font-size:15px;font-family: 'Abel', sans-serif;
+
       }
   
       /*Graph content*/
@@ -224,15 +229,13 @@ body{
   
       /*Set Time button styling*/
       .set_buttons{
-        font-family: 'Source Code Pro', monospace;
-        font-family: 'Plaster', cursive;
-        font-family: 'Black Han Sans', sans-serif;
+        font-family: 'Abel', sans-serif;
+
        }
   
   
        /* Buy Sell button styling*/
        .b_s_buttons{
-        margin-left:50px;font-family: 'Source Code Pro', monospace;
-        font-family: 'Plaster', cursive;
-        font-family: 'Black Han Sans', sans-serif;
+        margin-left:50px;font-family: 'Abel', sans-serif;
+
        }

@@ -20,9 +20,8 @@
 
   /*Set Time button styling*/
   .set_buttons{
-    font-family: 'Source Code Pro', monospace;
-    font-family: 'Plaster', cursive;
-    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Abel', sans-serif;
+
    }
 
 
@@ -30,7 +29,6 @@
    .b_s_buttons{
     margin-left:50px;
     padding:10px 50px 10px 50px;
-    font-family: 'Source Code Pro', monospace;
-    font-family: 'Plaster', cursive;
-    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Abel', sans-serif;
+
    }

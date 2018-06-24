@@ -28,7 +28,6 @@ getBdetails = [];
      let headers = new Headers({ 'Content-Type': 'application/json' });
      let options = new RequestOptions({ headers: headers });
     
-       // var body = "username=" + username + "password=" + password;
        console.log(JSON.stringify(bnameforJ));
        this.http.post("http://localhost:8080/broker/portfolio", JSON.stringify(bnameforJ),options).subscribe((data) => {
          console.log(data.json())

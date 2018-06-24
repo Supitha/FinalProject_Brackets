@@ -25,6 +25,8 @@ stock_names = [];
 bname:string;
 full_json_array = [];
 
+getBdetails = [];
+
   constructor(private data:DataShareService, private _http:HttpClient,private http:Http,private router:Router) {}
 
   ngOnInit() {

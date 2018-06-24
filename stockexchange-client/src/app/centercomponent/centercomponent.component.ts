@@ -53,8 +53,7 @@ setInterval(()=>{
       }
       console.log(stock_price);
   
-      // let timeloop=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-           let timeloop=["ggl","fb","apl","huly","pi","sam","wso2","omo","ifs","99x","hsen","wayne","stark","iro","ssw","rk","sj","gns"];
+           let timeloop=["google","amazon","hooli","apple","stark","wayne","wb","delos","fox","nasa","fedex","dhl","sony","jvc","oracle","rk","dk","yahoo"];
 
 
 

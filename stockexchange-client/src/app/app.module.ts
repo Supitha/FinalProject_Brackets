@@ -41,14 +41,17 @@ const appRoutes:Routes = [
   },
   {
     path:'broker-ui',
+    canActivate:[AuthguardGuard],
     component:BrokerUIComponent
   },
   {
     path:'fullpage/leaderBoard',
+    canActivate:[AuthguardGuard],
     component:LeaderboardComponent
   },
   {
     path:'fullpage/portfoliob',
+    canActivate:[AuthguardGuard],
     component:PortfoliobComponent
   }
 ];
