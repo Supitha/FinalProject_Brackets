@@ -80,11 +80,6 @@ public class StocksController {
     String createNewStock(@RequestBody Stocks stocks) {
         stocksRepository.save(stocks);
         /////////////////////TODO: Delete following
-        aiRepository.createBankAccountAI();
-        aiRepository.buyStocksAI();
-        aiRepository.sellStockAI();
-        Broker_stocks a = aiRepository.selectCompanyAI();
-        System.out.print(a);
         updateStocksPrices();
         /////////////////////
         return "saved";

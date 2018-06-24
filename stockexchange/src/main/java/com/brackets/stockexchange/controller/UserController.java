@@ -2,6 +2,7 @@ package com.brackets.stockexchange.controller;
 
 import com.brackets.stockexchange.model.Bank;
 import com.brackets.stockexchange.model.User;
+import com.brackets.stockexchange.repository.AIRepository;
 import com.brackets.stockexchange.repository.BankRepository;
 import com.brackets.stockexchange.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class UserController {
     private UserRepository userRepository;
     @Autowired
     private BankRepository bankRepository;
+    @Autowired
+    private AIRepository aiRepository ;
 
     @RequestMapping(path = "/save", method = RequestMethod.POST)
     public @ResponseBody String createNewUser(@RequestBody User user) {
@@ -34,6 +37,7 @@ public class UserController {
             bank.setAccount_name(user.getUsername());
             bank.setBalance(1000);
             bankRepository.createNewAccountForUser(bank);
+            aiRepository.createBankAccountAI();//AI account creation
             return "Saved";
         } else {
             return "User already exists";
