@@ -21,8 +21,6 @@ import java.util.logging.Logger;
 public class StocksController {
     @Autowired
     private StocksRepository stocksRepository;
-    @Autowired
-    private AIRepository aiRepository ;
     
     int updateStocksPricesAlgo() {
         ArrayList sectorTrend = new ArrayList();
@@ -79,10 +77,14 @@ public class StocksController {
     public @ResponseBody
     String createNewStock(@RequestBody Stocks stocks) {
         stocksRepository.save(stocks);
-        /////////////////////TODO: Delete following
-        updateStocksPrices();
-        /////////////////////
         return "saved";
+    }
+    
+    @RequestMapping(path = "/stdynamic", method = RequestMethod.POST)
+    public @ResponseBody
+    String stockDeviation() {
+        updateStocksPrices();
+        return "stock deviation started";
     }
 
     @RequestMapping(path = "/all", method = RequestMethod.GET)
