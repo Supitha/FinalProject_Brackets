@@ -91,5 +91,12 @@ public class StocksController {
         // This returns a JSON or XML with the users
         return stocksRepository.findAll();
     }
+    
+    @RequestMapping(path = "/pricedefault", method = RequestMethod.POST)
+    public @ResponseBody
+    String stockPriceToDefault() {
+        stocksRepository.updateStocksPriceToDefault();
+        return "all prices reset";
+    }
 
 }

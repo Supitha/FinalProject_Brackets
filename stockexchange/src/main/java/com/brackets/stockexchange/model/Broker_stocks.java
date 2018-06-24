@@ -14,11 +14,6 @@ public class Broker_stocks {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "broker_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Broker broker;
-
     @Transient
     private String cusName;
     
@@ -44,14 +39,6 @@ public class Broker_stocks {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Broker getBroker() {
-        return broker;
-    }
-
-    public void setBroker(Broker broker) {
-        this.broker = broker;
     }
 
     public String getStock() {

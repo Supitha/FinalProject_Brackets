@@ -26,4 +26,12 @@ public class StocksRepositoryImpl implements StocksRepositoryCustom {
         query.setParameter(2, stocks.getId());
         query.executeUpdate();
     }
+    
+    @Override
+    @Transactional
+    public void updateStocksPriceToDefault() {
+        Query query = entityManager.createNativeQuery("UPDATE stocks SET price = (?)");
+        query.setParameter(1, 100);
+        query.executeUpdate();
+    }
 }

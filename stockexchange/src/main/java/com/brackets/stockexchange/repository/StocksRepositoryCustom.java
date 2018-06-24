@@ -8,4 +8,5 @@ import com.brackets.stockexchange.model.Stocks;
  */
 public interface StocksRepositoryCustom {
     void updateStocksPrices(Stocks stocks);
+    void updateStocksPriceToDefault();
 }

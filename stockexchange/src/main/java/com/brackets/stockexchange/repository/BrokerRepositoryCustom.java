@@ -23,4 +23,5 @@ public interface BrokerRepositoryCustom {
     Stocks getPriceOfStock(String stname);
     boolean checkQtyFromCustomer(Broker_customer broker_customer);
     void updateBrokerStocksQty();
+    List<Broker_stocks> findStockByBrokerId(Broker_stocks broker_stock);
 }

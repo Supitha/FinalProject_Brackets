@@ -72,4 +72,11 @@ public class BrokerController {
         broker_customer.setBroker_name(broker_cus.getBroker_name());
         return brokerRepository.getcustomerinfo(broker_customer);
     }
+    
+    @RequestMapping(path = "/brokerall", method = RequestMethod.POST)
+    public @ResponseBody Iterable<Broker_stocks> findStocksByBroker(@RequestBody Broker_stocks broker_cus){
+        Broker_stocks broker_stocks = new Broker_stocks();
+        broker_stocks.setBroker_name(broker_cus.getBroker_name());
+        return brokerRepository.findStockByBrokerId(broker_stocks);
+    }
 }

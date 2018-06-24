@@ -216,4 +216,11 @@ public class BrokerRepositoryImpl implements BrokerRepositoryCustom {
         }
     }
 
+    @Override
+    public List<Broker_stocks> findStockByBrokerId(Broker_stocks broker_stock) {
+        Query query = entityManager.createNativeQuery("SELECT * FROM broker_stocks WHERE broker_name = ?", Broker_stocks.class);
+        query.setParameter(1, broker_stock.getBroker_name());
+        return query.getResultList();
+    }
+
 }
