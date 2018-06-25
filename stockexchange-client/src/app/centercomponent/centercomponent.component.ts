@@ -31,15 +31,6 @@ private timer;
 
   }
 
-
-  updateGraph(){
-setInterval(()=>{
-   this.ngOnInit();
-},15000);
-
-  }
-
-
   drawGraph(){
     this._graph.getGraphData()
     .subscribe(res => {

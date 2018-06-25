@@ -131,7 +131,7 @@ console.log(this.full_json_array);
     console.log(this.count);
     if(this.count == 5){
       alert("Game Over, You have tried all of your chances, Now go to leaderboard");
-      this.router.navigate(['leaderboard'])
+      this.router.navigateByUrl('fullpage/leaderBoard');
     }
   }
 

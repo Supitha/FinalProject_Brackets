@@ -13,6 +13,7 @@ import { DataShareService } from '../data-share.service';
 export class BrokerUIComponent implements OnInit {
   brokers = [];
   bname :string;
+  flag = false;
 
   constructor(private _http:HttpClient,private router:Router,private data:DataShareService) {
   
@@ -33,10 +34,17 @@ export class BrokerUIComponent implements OnInit {
   }
 
   fullPage(){
-    console.log("Clicked");
-    this.router.navigateByUrl('fullpage')  }
+    if (!this.flag) {
+      alert("Please select a Broker");
+      this.router.navigateByUrl('broker-ui');
+    } else{
+      this.router.navigateByUrl('fullpage') 
+     }
+  }
+    
 
     onSelect(broker){
+      this.flag = true;
       this.data.editBname(broker.username);
 
       console.log(broker.username);
