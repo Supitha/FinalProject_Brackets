@@ -11,7 +11,7 @@
               <br>
               <br>
           <select class="form-control"  (change)="onSelected($event)" id="sel1" name="stock" [(ngModel)]="Model.stockname">
-              <option *ngFor="let stock_name of stock_names" [value]="stock_name.stockName">{{stock_name.stockName}}</option>
+              <option *ngFor="let stock_name of stock_names" [value]="stock_name.stock">{{stock_name.stock}}</option>
           </select>
           <br>
 

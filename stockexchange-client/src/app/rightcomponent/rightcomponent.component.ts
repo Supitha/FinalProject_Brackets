@@ -24,13 +24,14 @@ uname:string;
 stock_names = [];
 bname:string;
 full_json_array = [];
+private timer;
 
 getBdetails = [];
 
   constructor(private data:DataShareService, private _http:HttpClient,private http:Http,private router:Router) {}
 
   ngOnInit() {
-    this.loadDetailstoDropdown();
+    
     this.data.currentUname.subscribe(uname => this.uname = uname);
     //In here user takes the uname.
     console.log(this.uname);
@@ -42,17 +43,23 @@ getBdetails = [];
     //In here broker takes the bname.
     console.log(this.bname);
     this.full_json_array.push(this.bname);
-
     console.log(this.full_json_array);
+    this.loadDetailstoDropdown();
     
   }
 
 
   loadDetailstoDropdown(){
-    return this._http.get("http://localhost:8080/stocks/all")
-    .subscribe(
-     (data:any[]) => this.stock_names = data
-    )
+  
+    var bnameforJ = { 
+      "broker_name":this.bname
+    }
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post("http://localhost:8080/broker/brokerall", JSON.stringify(bnameforJ),options).subscribe((data) => {
+                this.stock_names = data.json();
+          });
   }
 
 
@@ -129,7 +136,7 @@ console.log(this.full_json_array);
   clickCount(){
     this.count++
     console.log(this.count);
-    if(this.count == 5){
+    if(this.count == 6){
       alert("Game Over, You have tried all of your chances, Now go to leaderboard");
       this.router.navigateByUrl('fullpage/leaderBoard');
     }
