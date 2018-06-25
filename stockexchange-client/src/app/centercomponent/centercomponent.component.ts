@@ -21,7 +21,10 @@ private timer;
   constructor(private _http:HttpClient, private _graph:HelperService) { }
 
   ngOnInit() {
-    this.load_stock_details();
+    
+    setInterval(()=>{
+      this.load_stock_details();
+    },5000)
 
     this.drawGraph();
     
