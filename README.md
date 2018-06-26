@@ -6,7 +6,7 @@ This will be a stock exchange application based on web services and AI.
 # Live demo
 Can be found in the Project Documentation
 
-#Official Web
+# Official Web
   visit http://bracketsstockexchange.ml
 
 # Set Up locally 
