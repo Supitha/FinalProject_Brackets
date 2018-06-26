@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>::Brackets | Stock Exchange::</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Team Brackets[ ]</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="generic.html" class="active">Architecture</a></li>
+						<li><a href="generic2.html">Reflection</a></li>
+						<li><a href="generic3.html">Game flow</a></li>
+						<li><a href="generic4.html">Technologies</a></li>
+						<li><a href="generic5.html">Team</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">The System Architecture</h1>
+							
+							<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-6"><span class="image fit"><center><img src="images/image1.jpg" alt=""/></center></span></div>
+											
+										</div>
+									</div>
+							<p>As u can see in the diagram database hold all the information about accounts, info about stocks, transaction history, relations between them and so on. Here UserEnd is used for carrying on transaction operations. The broker will manage to each kind of account information, history, portfolio and the Stock Simulator is used to handle all kind of orders of trading and the relations between players and system. Broker of the UserEnd will mainly exchange orders with the stock simulator and to get information of stocks. However, based on that information, the player had to make the decision..</p>
+							<p>At the Stock Simulator, there are companies that listed on the game. Each company has associated with a share price that has changed over the time.  So the fluctuation of the stock price happens according to the stock value algorithm of the game. And also come up with an assumption like an unlimited supply of stocks. According to the algorithm the deviation of the stock price change within -3 and +3 range. So too with the game base up on this stock prices. Player/ A.I.  come up with a decision to buy or sell stocks.   </p>
+							<p>
+								Here  UserEnd is the most  important interface between player and the system, So the orders exchanging between  UserEnd and TradingEnd  occupies the majority, for instance, if player wants to buy  stocks, player needs to input stock info (stock name & quantity), according to account information,  then broker will  form an order that can be accepted by stock simulator. The stock simulator will handle the orders and return the request information to the UserEnd and show the correct results. Apart from the relation with broker and stock simulator, there also exchange between players and bank, for instance when user signup/login to the system player should give user credentials to create/ view account, then the bank will routine the results. 
+							</p>
+						</br>
+							<p>Components features ,</p>
+
+
+							<div class="table-wrapper">
+										<table class="alt">
+											<tbody>
+												<tr>
+													<td>Stock Market Simulator</td>
+													<td>– responsible for stock exchange platform in transactions and as the price indexer 
+                                              board</td>
+												</tr>
+
+												<tr>
+													<td>Broker</td>
+													<td>-Player need to create the account, So according to the player, broker purchase the given stock at
+  												given price.</br>       -Manage the player's stocks, organize set of accounts that consist of portfolio and transaction</td>
+												</tr>
+
+												<tr>
+													<td>Bank</td>
+													<td>-Responsible to manage players money that consists the balance and transaction history</td>
+												</tr>
+
+												<tr>
+													<td>A.I. Player</td>
+													<td>-Computer player of the game, AI will follow the Broker, Do the buy/ sell shares based on 
+                        						strategy</td>
+												</tr>
+												<tr>
+													<td>Human Player</td>
+													<td> -User can buy/sell stocks, need to an account with a broker</td>
+												</tr>
+												<tr>
+													<td>GUI interfaces</td>
+													<td>User Sign up, User login, Broker,  Game-Play, Leaderboard, Portfolio </td>
+												</tr>
+											</tbody>
+											
+										</table>
+									</div>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Team Brackets | All rights reserved.</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
